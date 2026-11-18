@@ -38,4 +38,33 @@ function remainingPages(goalPages, readPages) {
 
 console.log(remainingPages(5000, 4000));
 
+// -------------- Problem Three
 
+function daysToFinish(pagesLeft, dailyPages, restOnSeventhDay) {
+    if (dailyPages < 1 || dailyPages > 100
+        || !Number.isInteger(dailyPages) || !Number.isInteger(pagesLeft)
+        || pagesLeft < 0 || pagesLeft > 5000) {
+        return null;
+    } else if (pagesLeft === 0) {
+        return 0;
+    } else if (restOnSeventhDay === false) {
+        let i = 0;
+        while (pagesLeft > 0) {
+            pagesLeft = pagesLeft - dailyPages;
+            i++
+        }
+        return i;
+    } else {
+        let i = 0;
+        while (pagesLeft > 0) {
+            i++
+            if (i % 7 == 0) {
+            } else {
+                pagesLeft = pagesLeft - dailyPages;
+            }
+        }
+        return i;
+    }
+}
+
+console.log(daysToFinish(121, 20, false));
