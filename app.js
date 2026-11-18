@@ -21,7 +21,7 @@ function plannedPages(days, dailyPages, restOnSeventhDay) {
     }
 }
 
-console.log(plannedPages(60, 20, false));
+console.log(plannedPages(7, 20, true));
 
 
 // -------------- Problem Two
@@ -38,25 +38,4 @@ function remainingPages(goalPages, readPages) {
 
 console.log(remainingPages(5000, 4000));
 
-// -------------- Problem Three
-function daysToFinish(pagesLeft, dailyPages, restOnSeventhDay) {
-    if (dailyPages < 1 || dailyPages > 100
-        || !Number.isInteger(dailyPages) || !Number.isInteger(pagesLeft)
-        || pagesLeft < 0 || pagesLeft > 5000) {
-        return null;
-    } else if (pagesLeft === 0) {
-        return 0;
-    } else if (restOnSeventhDay === false) {
-        let i = 1;
-        while (dailyPages * i <= pagesLeft) {
-            i = i + 1;
-        }
-        return i;
-    } else {
-        let restDays = 0;
-        while ()
-    }
 
-}
-
-console.log(daysToFinish(121, 20, false));
