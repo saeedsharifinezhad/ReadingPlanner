@@ -2,7 +2,8 @@
 function plannedPages(days, dailyPages, restOnSeventhDay) {
     if (days < 0 || days > 60 || dailyPages < 0
         || !Number.isInteger(days)
-        || !Number.isInteger(dailyPages)) {
+        || !Number.isInteger(dailyPages)
+        || typeof restOnSeventhDay !== "boolean") {
         return null;
     } else if (days == 0 || dailyPages == 0) {
         return 0;
@@ -43,7 +44,8 @@ console.log(remainingPages(5000, 4000));
 function daysToFinish(pagesLeft, dailyPages, restOnSeventhDay) {
     if (dailyPages < 1 || dailyPages > 100
         || !Number.isInteger(dailyPages) || !Number.isInteger(pagesLeft)
-        || pagesLeft < 0 || pagesLeft > 5000) {
+        || pagesLeft < 0 || pagesLeft > 5000
+        || typeof restOnSeventhDay !== "boolean") {
         return null;
     } else if (pagesLeft === 0) {
         return 0;
@@ -68,3 +70,27 @@ function daysToFinish(pagesLeft, dailyPages, restOnSeventhDay) {
 }
 
 console.log(daysToFinish(121, 20, false));
+
+// -------------- Problem Four
+
+function runReadingCommand(action, first, second, restOnSeventhDay) {
+
+    if (typeof restOnSeventhDay !== "boolean") {
+        return null;
+    } else if (action === "plan") {
+        return plannedPages(first, second, restOnSeventhDay);
+    } else if (action === "remaining") {
+        return remainingPages(first, second);
+    } else if (action === "finish") {
+        return daysToFinish(first, second, restOnSeventhDay);
+    } else {
+        return null;
+    }
+}
+
+
+
+console.log(runReadingCommand("plan", 7, 20, true));
+console.log(runReadingCommand("remaining", 200, 79, false));
+console.log(runReadingCommand("finish", 121, 20, true));
+console.log(runReadingCommand("Plan", 7, 20, true));
